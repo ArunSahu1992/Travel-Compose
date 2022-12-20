@@ -1,0 +1,33 @@
+name: Platform-CI-CD
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build:
+
+    runs-on: [self-hosted]
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v3
+      with:
+        dotnet-version: 4.7.0
+    
+    - name: Build
+      run: dotnet build Travel.sln
+      shell: cmd
+      working-directory: ./Travel      
+    
+      
+    - name: Create Docker Image on VM
+      run: |
+          docker-compose build
+          docker-compose up         
+      working-directory: ./Travel      
+    
+   
