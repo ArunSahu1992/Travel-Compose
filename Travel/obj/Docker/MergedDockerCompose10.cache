@@ -1,0 +1,24 @@
+services:
+  travel.api:
+    build:
+      context: E:\DotNet\Travel
+      dockerfile: Travel.API/Dockerfile
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+    image: travelapi
+    ports:
+    - target: 80
+    - published: 9990
+      target: 9990
+  travel.webapp:
+    build:
+      context: E:\DotNet\Travel
+      dockerfile: Travel.WebApp/Dockerfile
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+    image: travelwebapp
+    ports:
+    - target: 80
+    - published: 9991
+      target: 9991
+version: '3.4'

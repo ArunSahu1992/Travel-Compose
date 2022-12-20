@@ -1,0 +1,21 @@
+version: '3.4'
+
+services:
+  travel.api:
+    image: ${DOCKER_REGISTRY-}travelapi
+    build:
+      context: .
+      dockerfile: Travel.API/Dockerfile
+    ports:
+        - 9990:9990
+
+  travel.webapp:
+    image: ${DOCKER_REGISTRY-}travelwebapp
+    build:
+      context: .
+      dockerfile: Travel.WebApp/Dockerfile  
+    depends_on:
+      - travel.api
+    ports:
+
+        - 9991:9991

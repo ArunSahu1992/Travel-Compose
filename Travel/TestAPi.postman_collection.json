@@ -1,0 +1,72 @@
+{
+	"info": {
+		"_postman_id": "24289c7f-7933-424d-b434-24c2309a9f61",
+		"name": "TestAPi",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "7655838"
+	},
+	"item": [
+		{
+			"name": "Test Get Values",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"  pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:7008/api/values",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "7008",
+					"path": [
+						"api",
+						"values"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Travel",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{apiurl}}/api/travel",
+					"host": [
+						"{{apiurl}}"
+					],
+					"path": [
+						"api",
+						"travel"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
