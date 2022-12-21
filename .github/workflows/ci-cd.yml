@@ -20,7 +20,7 @@ jobs:
       - name: Build and generate Compose file
         run: |
           dotnet build
-          dotnet compose --file my-app.csproj --output docker-compose.yml 
+          dotnet compose --file Travel.csproj --output docker-compose.yml 
         working-directory: ./Travel
     
     
