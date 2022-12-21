@@ -7,17 +7,15 @@ on:
     branches: [ "main" ]
 
 jobs:
-  build:
+  build: 
 
-    runs-on: [self-hosted]
+    runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-dotnet@v2
-        with:
-          dotnet-version: 5.0.x
-          
-      - name: Build and generate Compose file 
-        run: docker-compose -f "./Travel/docker-compose.yml" up -d --build
+    - name: Checkout
+      uses: actions/checkout@v1
+
+    - name: Start containers
+      run: docker-compose -f "./Travel/docker-compose.yml" up -d --build
     
     
