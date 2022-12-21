@@ -15,8 +15,8 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v1
 
-    - name: Start containers
-      run: echo docker --version
+    - name: Build the tagged Docker image
+      run: docker build . --file "./Travel/Travel.API/Dockerfile
        
     
     
