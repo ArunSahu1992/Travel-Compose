@@ -12,7 +12,15 @@ jobs:
     runs-on: [self-hosted]
 
     steps:
-    
-    - uses: actions/checkout@v3     
+      - uses: actions/checkout@v2
+      - uses: actions/setup-dotnet@v2
+        with:
+          dotnet-version: 5.0.x
+          
+      - name: Build and generate Compose file
+        run: |
+          dotnet build
+          dotnet compose --file my-app.csproj --output docker-compose.yml 
+        working-directory: ./Travel
     
     
