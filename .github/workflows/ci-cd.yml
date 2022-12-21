@@ -17,9 +17,7 @@ jobs:
         with:
           dotnet-version: 5.0.x
           
-      - name: Build and generate Compose file
-        run: |
-          docker-compose build
-        working-directory: ./Travel
+      - name: Build and generate Compose file 
+        run: docker-compose -f "./Travel/docker-compose.yml" up -d --build
     
     
