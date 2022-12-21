@@ -16,6 +16,8 @@ jobs:
       uses: actions/checkout@v1
 
     - name: Start containers
-      run: docker-compose -f "./Travel/docker-compose.yml" up -d --build
+      run: |
+        service docker start
+        docker-compose -f "./Travel/docker-compose.yml" up -d --build
     
     
