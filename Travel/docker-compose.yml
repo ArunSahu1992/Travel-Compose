@@ -2,14 +2,16 @@ version: '3.4'
 
 services:
   travel.api:
+    container_name: api
     image: ${DOCKER_REGISTRY-}travelapi
     build:
       context: .
       dockerfile: Travel.API/Dockerfile
     ports:
-        - 9990:9990
+        - 9990:80
 
   travel.webapp:
+    container_name: web
     image: ${DOCKER_REGISTRY-}travelwebapp
     build:
       context: .
@@ -18,4 +20,4 @@ services:
       - travel.api
     ports:
 
-        - 9991:9991
+        - 9991:80
