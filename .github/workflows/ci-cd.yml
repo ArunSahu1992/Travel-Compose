@@ -16,7 +16,7 @@ jobs:
       uses: actions/checkout@v1
 
     - name: Build the tagged Docker image
-      run: docker-compose -f "./Travel/docker-compose.yml" up -d --build
+      run:  docker stop $( docker ps --filter ancestor=$(docker images --filter=reference=travelapi--format "{{.ID}}") --format "{{.ID}}")
        
     
     
