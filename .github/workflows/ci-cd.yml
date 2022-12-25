@@ -17,11 +17,11 @@ jobs:
 
     - name: Build the tagged Docker image
       run:  |
-          var img = docker images --filter=reference=travelapi --format "{{.ID}}"
-          var cont =  docker ps --filter ancestor= img --format "{{.ID}}"
-          docker stop  cont
-          docker rm -f cont
-          docker rmi img
+          $img = docker images --filter=reference=travelapi --format "{{.ID}}"
+          $cont =  docker ps --filter ancestor= $img --format "{{.ID}}"
+          docker stop  $cont
+          docker rm -f %cont
+          docker rmi $img
         
        
     
