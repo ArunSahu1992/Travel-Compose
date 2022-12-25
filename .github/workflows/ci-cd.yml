@@ -17,7 +17,12 @@ jobs:
 
     - name: Build the tagged Docker image
       run:  |
+          docker stop $( docker ps --filter ancestor=$(docker images --filter=reference=travelwebapp  --format "{{.ID}}") --format "{{.ID}}")
+          docker rm $( docker ps --filter ancestor=$(docker images --filter=reference=travelwebapp  --format "{{.ID}}") --format "{{.ID}}")
+          docker rmi $(docker images --filter=reference=travelwebapp  --format "{{.ID}}") 
           docker stop $( docker ps --filter ancestor=$(docker images --filter=reference=travelapi --format "{{.ID}}") --format "{{.ID}}")
+          docker rm $( docker ps --filter ancestor=$(docker images --filter=reference=travelapi --format "{{.ID}}") --format "{{.ID}}")
+          docker rmi $(docker images --filter=reference=travelapi --format "{{.ID}}") 
         
        
     
