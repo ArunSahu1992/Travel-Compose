@@ -17,7 +17,7 @@ jobs:
 
     - name: Get Images
       id: img
-      run :
+      run : |
         echo "docker_tagapi=$(docker images --filter=reference=travelapi --format "{{.ID}}")" >> $GITHUB_OUTPUT
         echo "docker_tagweb=$(docker images --filter=reference=travelwebapp --format "{{.ID}}")" >> $GITHUB_OUTPUT
 
