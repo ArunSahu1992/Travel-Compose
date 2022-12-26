@@ -22,9 +22,7 @@ jobs:
     - name: Print Images  
       env:   
                image_ids: ${{ steps.images.outputs.stdout }}
-      
-    - name: Read Images  
-      run : ${{ env.image_ids }}
+
        
     
     
