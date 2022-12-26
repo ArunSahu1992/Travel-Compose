@@ -16,13 +16,14 @@ jobs:
       uses: actions/checkout@v1
 
     - name: Get Images
-      id  : img
-      run:  |
         echo "docker_tag=$(docker images --filter=reference=travelapi --format "{{.ID}}")" >> $GITHUB_OUTPUT
       
-    - name: Get Images11
-      run:  echo "${{ steps.img.outputs.docker_tag }}"
-      
+    - name: Get Container
+      id  : cont
+      run:  |
+          echo "docker_con=$(docker ps --filter ancestor=${{steps.img.outputs.docker_tag}})" >> $GITHUB_OUTPUT  
+    - name: Get Container
+      run: echo ${{steps.cont.outputs.docker_con}}
  
 
        
