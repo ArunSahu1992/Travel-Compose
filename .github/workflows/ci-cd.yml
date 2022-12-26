@@ -18,7 +18,11 @@ jobs:
     - name: Get Images
       id  : img
       run:  |
-        set-output name=FAV_NUMBER::docker images --filter=reference=travelapi --format "{{.ID}}")
+        set-output name=FAV_NUMBER::docker images --filter=reference=travelapi --format "{{.ID}}"
+        
+    - name: Read Images 
+      run:  |
+        echo "${{steps.abc.outputs.FAV_NUMBER}}"
       
         
        
