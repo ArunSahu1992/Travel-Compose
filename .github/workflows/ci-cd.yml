@@ -21,7 +21,7 @@ jobs:
       
     - name: Set image IDs variable
       env:
-        image_ids: ${{ steps.img.outputs.stdout }}
+        image_ids: ${{ steps.img.outputs }}
 
 
        
