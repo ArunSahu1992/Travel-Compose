@@ -17,7 +17,7 @@ jobs:
 
     - name: Build the tagged Docker image
       run:  |
-         docker images --filter=reference=travelapi --format "{{.ID}}"
+         $img = "aa"
         
        
     
