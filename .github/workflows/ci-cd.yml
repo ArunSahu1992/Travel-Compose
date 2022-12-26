@@ -18,10 +18,7 @@ jobs:
     - name: Get Images
       id  : img
       run:  docker images --filter=reference=travelapi --format "{{.ID}}" 
-      
-    - name: Print Images  
-      env:   
-               image_ids: ${{ steps.images.outputs.stdout }}
+
 
        
     
