@@ -23,7 +23,7 @@ jobs:
     - name: Get Cont
       id  : con
       run : |
-        echo "docker_con=$(docker ps --filter ancestor= ${{ steps.img.outputs.docker_tag }} --format "{{.ID}}")" >> $GITHUB_OUTPUT
+        echo "docker_con=$(docker ps --filter ancestor=${{steps.img.outputs.docker_tag}} --format "{{.ID}}")" >> $GITHUB_OUTPUT
     
     - name: Print Cont
       run : ${{steps.con.outputs.docker_con}}
