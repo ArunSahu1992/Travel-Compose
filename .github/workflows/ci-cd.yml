@@ -19,6 +19,9 @@ jobs:
       id  : img
       run:  echo "docker_tag=$(docker images --filter=reference=travelapi --format "{{.ID}}")"
       
+    - name: Get Images
+      run:  echo "${{ steps.img.outputs.docker_tag }}"
+      
  
 
        
