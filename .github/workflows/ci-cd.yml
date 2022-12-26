@@ -28,7 +28,7 @@ jobs:
     - name: Print Cont
       run : |
             docker stop ${{steps.con.outputs.docker_con}}
-            docker rmi ${{steps.con.outputs.docker_con}}
+            docker rm ${{steps.con.outputs.docker_con}}
             
       
  
