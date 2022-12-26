@@ -22,8 +22,8 @@ jobs:
       id  : cont
       run:  |
           echo "docker_con=$(docker ps --filter ancestor=${{steps.img.outputs.docker_tag}})" >> $GITHUB_OUTPUT  
-    - name: Get Container
-      run: echo ${{steps.cont.outputs.docker_con}}
+          
+ 
  
 
        
