@@ -13,7 +13,28 @@ jobs:
 
     steps:
     - name: Checkout
-      uses: actions/checkout@v1 
+      uses: actions/checkout@v1
+
+    - name: Get Images
+      id: img
+      run : |
+        echo "docker_tagapi=$(docker images --filter=reference=travelapi --format "{{.ID}}")" >> $GITHUB_OUTPUT
+        echo "docker_tagweb=$(docker images --filter=reference=travelwebapp --format "{{.ID}}")" >> $GITHUB_OUTPUT
+
+    - name: Get Container
+      id  : con
+      run : |
+        echo "docker_conapi=$(docker ps --filter ancestor=${{steps.img.outputs.docker_tagapi}} --format "{{.ID}}")" >> $GITHUB_OUTPUT
+        echo "docker_conweb=$(docker ps --filter ancestor=${{steps.img.outputs.docker_tagweb}} --format "{{.ID}}")" >> $GITHUB_OUTPUT
+    
+    - name: Stop docker and Delete container and Images
+      run : |
+            docker stop ${{steps.con.outputs.docker_conapi}}
+            docker rm ${{steps.con.outputs.docker_conapi}}
+            docker rmi -f ${{steps.img.outputs.docker_tagapi}}
+            docker stop ${{steps.con.outputs.docker_conweb}}
+            docker rm ${{steps.con.outputs.docker_conweb}}
+            docker rmi -f ${{steps.img.outputs.docker_tagweb}}
             
     - name: Compose images and deployment
       run: docker-compose -f "./Travel/docker-compose.yml" up -d --build
