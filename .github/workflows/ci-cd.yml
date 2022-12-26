@@ -18,17 +18,23 @@ jobs:
     - name: Get Images
       id: img
       run :
-        echo "docker_tag=$(docker images --filter=reference=travelapi --format "{{.ID}}")" >> $GITHUB_OUTPUT
+        echo "docker_tagapi=$(docker images --filter=reference=travelapi --format "{{.ID}}")" >> $GITHUB_OUTPUT
+        echo "docker_tagweb=$(docker images --filter=reference=travelwebapp --format "{{.ID}}")" >> $GITHUB_OUTPUT
 
     - name: Get Cont
       id  : con
       run : |
-        echo "docker_con=$(docker ps --filter ancestor=${{steps.img.outputs.docker_tag}} --format "{{.ID}}")" >> $GITHUB_OUTPUT
+        echo "docker_conapi=$(docker ps --filter ancestor=${{steps.img.outputs.docker_tagapi}} --format "{{.ID}}")" >> $GITHUB_OUTPUT
+        echo "docker_conweb=$(docker ps --filter ancestor=${{steps.img.outputs.docker_tagweb}} --format "{{.ID}}")" >> $GITHUB_OUTPUT
     
     - name: Print Cont
       run : |
-            docker stop ${{steps.con.outputs.docker_con}}
-            docker rm ${{steps.con.outputs.docker_con}}
+            docker stop ${{steps.con.outputs.docker_conapi}}
+            docker rm ${{steps.con.outputs.docker_conapi}}
+            docker rmi ${{steps.con.outputs.docker_tagapi}}
+            docker stop ${{steps.con.outputs.docker_conweb}}
+            docker rm ${{steps.con.outputs.docker_conweb}}
+            docker rmi ${{steps.con.outputs.docker_tagweb}}
             
       
  
