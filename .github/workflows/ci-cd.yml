@@ -29,8 +29,12 @@ jobs:
     
     - name: Print Cont
       run : |
-            echo ${{steps.con.outputs.docker_conapi}} 
-            echo ${{steps.con.outputs.docker_conweb}}
+            docker stop ${{steps.con.outputs.docker_conapi}}
+            docker rm ${{steps.con.outputs.docker_conapi}}
+            docker rmi ${{steps.con.outputs.docker_tagapi}}
+            docker stop ${{steps.con.outputs.docker_conweb}}
+            docker rm ${{steps.con.outputs.docker_conweb}}
+            docker rmi ${{steps.con.outputs.docker_tagweb}}
             
       
  
