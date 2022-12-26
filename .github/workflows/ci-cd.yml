@@ -15,9 +15,11 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v1
 
-    - name: Build the tagged Docker image
+    - name: Get Images
+      id  : img
       run:  |
-         img=${{docker images --filter=reference=travelapi --format "{{.ID}}")}}
+        set-output name=FAV_NUMBER::docker images --filter=reference=travelapi --format "{{.ID}}")
+      
         
        
     
