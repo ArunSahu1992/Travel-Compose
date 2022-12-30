@@ -7,8 +7,14 @@ on:
     branches: [ "main" ]
 
 jobs:
-  build: 
 
+ build:
+ 
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+  
     runs-on: [self-hosted]
     steps:
       - name: 'Az CLI login'
