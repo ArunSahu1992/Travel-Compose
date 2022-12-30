@@ -14,6 +14,8 @@ jobs:
       - name: 'Az CLI login'
         uses: azure/login@v1
         with:
-          creds: '${{ secrets.azurecredetials }}'
+          client-id: '7127239d-ba67-42ea-93a5-a976656f19a1'
+          tenant-id: 'e9b87331-4989-419f-be74-30290dc33757'
+          subscription-id: 'd529b49c-e69a-45c1-9d8f-c3205d30cfc3'
           
        
